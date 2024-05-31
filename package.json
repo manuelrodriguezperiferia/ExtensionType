@@ -1,7 +1,9 @@
 {
   "name": "chatdevopsts",
   "displayName": "ChatdevopsTS",
-  "description": "Extension en typescript",
+  "description": "Extension Chatbot OpenAI del area de DevOps [Periferia] en typescript",
+  "publisher": "ChatdevopsTS",
+  "icon": "img/chat_small.png",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.89.0"
@@ -9,13 +11,40 @@
   "categories": [
     "Other"
   ],
-  "activationEvents": [],
+  "activationEvents": [
+    "onCommand: chatdevops.StartChat",
+    "onView:chat-sidebar.views"
+  ],
   "main": "./out/extension.js",
   "contributes": {
+    "viewsContainers": {
+			"activitybar": [
+				{
+					"id": "chat-sidebar",
+					"title": "chatdevops",
+					"icon": "img/chat_small.svg"
+				}
+			]
+		},
+		"views": {
+			"chat-sidebar": [
+				{
+					"type": "webview",
+					"id": "chat-sidebar.view",
+					"name": "chatdevops",
+					"icon": "img/chat_small.svg",
+					"contextualTitle": "chatdevops"
+				}
+			]
+		},
     "commands": [
       {
+        "command": "chatdevops.StartChat",
+        "title": "StartChat"
+      },
+      {
         "command": "chatdevopsts.helloWorld",
-        "title": "Hello World"
+        "title": "HelloWorld"
       }
     ]
   },
@@ -37,5 +66,10 @@
     "typescript": "^5.4.5",
     "@vscode/test-cli": "^0.0.9",
     "@vscode/test-electron": "^2.3.9"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/manuelrodriguezperiferia/ExtensionType.git"
+  },
+  "license":"License.txt"
 }
